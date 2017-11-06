@@ -1,0 +1,29 @@
+<h1>Games#game</h1>
+
+<div>
+  <h3>This game was inspired by the french game "Des chiffres et les lettres"</h3>
+  <h5>Try to answer longer words in short time for higher scores.</h5>
+  <ul class="list-inline">
+    <% @grid.each do |letter| %>
+      <li class='list-inline-item'><%= letter %></li>
+    <% end %>
+  </ul>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      <form action="/score">
+        <div class="form-group">
+          <label for="usr">Submit a word using the letters shown:</label>
+          <input type="text" name="guess" class="form-control">
+          <input type="hidden" name="start_time" value="<%= Time.now %>">
+          <input type="hidden" name="grid" value="<%= @grid.join %>">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
